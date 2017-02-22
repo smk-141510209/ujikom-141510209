@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('content')
 <center><h1>Daftar Tunjangan Pegawai</h1></center>
-	<table class="table table-striped table-border table-hover">
+<a  href="{{url('tunjanganp/create')}}" class="btn btn-danger ">Tambah</a>
+	<table border="1" class="table table-striped table-border table-hover">
 		<thead>
 			<tr>
 				<th>No</th>
@@ -31,6 +32,6 @@
 			@endforeach
 		</tbody>
 	</table>
-	<a  href="{{url('tunjanganp/create')}}" class="btn btn-danger ">Tambah</a>
+	
 
 @endsection

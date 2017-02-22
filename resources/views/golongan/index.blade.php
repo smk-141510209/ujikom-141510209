@@ -4,7 +4,8 @@
 @endsection
 @section('content')
 <center><h1>Daftar Golongan</h1></center>
-	<table  class="table table-striped table-border table-hover">
+<a  href="{{url('golongan/create')}}" class="btn btn-danger ">Tambah</a>
+	<table border="1" class="table table-striped table-border table-hover">
 		<thead>
 			<tr>
 				<th>No</th>
@@ -34,8 +35,7 @@
 			@endforeach
 		</tbody>
 	</table>
-	<a  href="{{url('golongan/create')}}" class="btn btn-danger ">Tambah</a>
+	
 
 
 @endsection
-<marquee behavior="alternate" onmouseover="this.stop()" onmouseout="this.start()">Ujikom Bisa !!!</marquee>

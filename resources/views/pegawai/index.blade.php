@@ -6,8 +6,9 @@
 			        <div class="col-md-6 col-md-offset-0">
 			            <div class="panel panel-danger">
 			                <h1><center><div class="panel-heading">Data Pegawai</div></center></h1>
+			                
 			                <div class="panel-body">
-			                	<table  class="table table-success table-border table-hover">
+			                	<table border="2" class="table table-success table-border table-hover">
 									<thead >
 										<tr>
 											<th>No</th>
@@ -42,7 +43,7 @@
 			            <div class="panel panel-danger">
 			               <h1><center><div class="panel-heading">Data User</div></center></h1>
 			                <div class="panel-body">
-			                	<table  class="table table-success table-border table-hover">
+			                	<table border="2" class="table table-success table-border table-hover">
 									<thead >
 										<tr>
 											<th>Name</th>

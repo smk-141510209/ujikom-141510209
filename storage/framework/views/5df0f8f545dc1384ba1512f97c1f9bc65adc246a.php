@@ -2,12 +2,12 @@
     active
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
-<h1>Edit Pegawai</h1>
+<center><h1>Edit Pegawai</h1></center>
 	<div class="container">
     <div class="row">
         <div class="col-md-6">
             <div class="panel panel-danger">
-                <div class="panel-heading">Edit Pegawai</div>
+                <center><div class="panel-heading">Edit Pegawai</div></center>
                 <div class="panel-body">
                     <?php echo Form::model($pegawai,['method'=>'PATCH','route'=>['pegawai.update',$pegawai->id],'enctype'=>'multipart/form-data']); ?>
 
@@ -58,9 +58,8 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <div class="panel-title">Tambah Pegawai</div>
+            <div class="panel panel-danger">
+                    <center><div class="panel-heading">Tambah Pegawai</div></center>
                 </div>
                 <div class="panel-body">
                     <div class="form-group<?php echo e($errors->has('nip') ? ' has-error' : ''); ?>">

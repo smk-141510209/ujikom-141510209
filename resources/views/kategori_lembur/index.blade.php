@@ -4,7 +4,9 @@
 @endsection
 @section('content')
 <h1><center><h1>Daftar Kategori Lembur</h1></center></h1>
-	<table  class="table table-striped table-border table-hover">
+<a  href="{{url('kategori/create')}}" class="btn btn-danger ">Tambah</a>
+
+	<table border="1" class="table table-striped table-border table-hover">
 		<thead>
 			<tr>
 				<th>No</th>
@@ -36,6 +38,5 @@
 			@endforeach
 		</tbody>
 	</table>
-	<a  href="{{url('kategori/create')}}" class="btn btn-danger ">Tambah</a>
-
+	
 @endsection

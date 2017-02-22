@@ -1,6 +1,7 @@
 <?php $__env->startSection('content'); ?>
 <center><h1>Daftar Tunjangan Pegawai</h1></center>
-	<table class="table table-striped table-border table-hover">
+<a  href="<?php echo e(url('tunjanganp/create')); ?>" class="btn btn-danger ">Tambah</a>
+	<table border="1" class="table table-striped table-border table-hover">
 		<thead>
 			<tr>
 				<th>No</th>
@@ -33,7 +34,7 @@
 			<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 		</tbody>
 	</table>
-	<a  href="<?php echo e(url('tunjanganp/create')); ?>" class="btn btn-danger ">Tambah</a>
+	
 
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

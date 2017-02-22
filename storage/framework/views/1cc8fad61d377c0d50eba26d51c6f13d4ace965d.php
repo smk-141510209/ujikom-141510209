@@ -3,7 +3,8 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 <center><h1>Daftar Lembur Pegawai</h1></center>
-	<table  class="table table-striped table-border table-hover">
+<a  href="<?php echo e(url('lemburp/create')); ?>" class="btn btn-danger ">Tambah</a>
+	<table border="1" class="table table-striped table-border table-hover">
 		<thead>
 			<tr>
 				<th>Lembur Ke-</th>
@@ -22,7 +23,7 @@
 				<td><?php echo e($data->kategori->kode_l); ?></td>
 				<td><?php echo e($data->Jumlah_jam); ?></td>
 				<td>
-					<a href="<?php echo e(route('lemburp.edit',$data->id)); ?>" class='btn btn-warning'> Edit </a>
+					<a href="<?php echo e(route('lemburp.edit',$data->id)); ?>" class='btn btn-danger'> Edit </a>
 				</td>
 				<td>
 					<?php echo Form::open(['method'=>'DELETE','route'=>['lemburp.destroy',$data->id]]); ?>
@@ -36,7 +37,7 @@
 			<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 		</tbody>
 	</table>
-	<a  href="<?php echo e(url('lemburp/create')); ?>" class="btn btn-danger ">Tambah</a>
+	
 
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
