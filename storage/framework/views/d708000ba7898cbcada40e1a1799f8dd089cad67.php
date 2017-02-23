@@ -3,10 +3,10 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 
-<div class="col-md-15 col-md-offset-0">
+ <div class="col-md-15 col-md-offset-0">
             <div class="panel panel-danger">
             <div class="panel-heading">
-                <h1><center><div class="panel-title">Pencarian Pegawai</div></center></h1>
+                <h1><center><div class="panel-title">Pencarian Menurut Pegawai</div></center></h1>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" action="<?php echo e(url('query')); ?>" method="GET"">
                         <?php echo e(csrf_field()); ?>
@@ -15,15 +15,15 @@
                         
 
                         <div class="form-group<?php echo e($errors->has('q') ? ' has-error' : ''); ?>">
+                            <label for="q" class="col-md-4 control-label">Pegawai</label>
 
-
-                            
-                               <center> <select name="q">
+                            <div class="col-md-6">
+                                <select name="q" class="form-control">
                                     <option value="">cari</option>
                                     <?php $__currentLoopData = $pegawai; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                     <option value="<?php echo e($data->id); ?>"><?php echo e($data->nip); ?><?php echo e($data->user->name); ?></option>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
-                                </select></center>
+                                </select>
 
                                 <?php if($errors->has('q')): ?>
                                     <span class="help-block">
@@ -32,46 +32,31 @@
                                 <?php endif; ?>
                             </div>
                         </div>
+
+                       
                         
-                                <center><button type="submit" class="btn btn-danger ">
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-danger ">
                                     Cari
-                                </button></center>
+                                </button>
                             </div>
                         </div>
-                        <div class="section">
-<div class="card-panel green white-text">Hasil pencarian : <b><?php echo e($query); ?></b></div>
-    <?php $__currentLoopData = $penggajian; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-    <div class="row">
-		<div class="col s12">
                     </form>
                 </div>
             </div>
         </div>
-
-
-
-            
-		</div>
-	</div>
-	<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
-
-</div>
-
-	
-	
-	
-
-
-
 <?php $__env->stopSection(); ?>
+ 						
 <?php $__env->startSection('content1'); ?>
 				<div class="col-md-15 col-md-offset-0">
                     <div class="panel panel-danger">
                         <div class="panel-body">
         <div class="col-md-15 col-md-offset-0">
             <div class="panel panel-danger">
-            <div class="panel panel-heading">
-			    <center><div class="panel-title">Data Penggajian</div></center>
+            <div class="panel-heading">
+			    <h1><center><div class="panel-title">Data Penggajian</div></center></h1>
 	                <div class="panel-body">
 				        
 				        <table border="2" class="table table-success table-border table-hover">
@@ -95,50 +80,69 @@
 											<tr>
 												<td><?php echo e($no++); ?></td>
 												<td><?php echo e($data->user->name); ?></td>
+												<td>
 												<?php $__currentLoopData = $tunjangan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data1): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+													
 													<?php if($data1->pegawai_id == $data->id): ?>
-														<td><?php echo e($data1->tunjangan->besar_uang); ?></td>
+														<?php echo e($data1->tunjangan->besar_uang); ?>
+
 														<?php  $a=$data1->tunjangan->besar_uang; ;  ?>
 													<?php endif; ?>
 
 												<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
-												<?php $__currentLoopData = $lemburp; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data1): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-													<?php if($data1->pegawai_id == $data->id): ?>
-														<td><?php echo e($data1->Jumlah_jam); ?></td>
-														<td><?php echo e($data1->Jumlah_jam*$data1->kategori->besar_uang); ?></td>
-														<?php  $b=$data1->Jumlah_jam*$data1->kategori->besar_uang;  ?>
+												</td>
+												<td>
+													
+												<?php $__currentLoopData = $lemburp; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data2): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+													<?php if($data2->pegawai_id == $data->id): ?>
+														<?php echo e($data2->Jumlah_jam); ?>
+
+														<?php  $b=$data2->Jumlah_jam*$data2->kategori->besar_uang;  ?>
 
 													<?php endif; ?>
 												<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+												</td>
+												<td>
+													
+												<?php $__currentLoopData = $lemburp; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data2): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+													<?php if($data2->pegawai_id == $data->id): ?>
+														<?php echo e($data2->Jumlah_jam*$data2->kategori->besar_uang); ?>
+
+														<?php  $b=$data2->Jumlah_jam*$data2->kategori->besar_uang;  ?>
+
+													<?php endif; ?>
+												<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+												</td>
 												<td><?php echo e($data->golongan->besar_uang+$data->jabatan->besar_uang); ?></td>
 												<?php  $c=$data->golongan->besar_uang+$data->jabatan->besar_uang;  ?>
 
 												<td><?php echo e($a + $b + $c); ?></td>
 												<td>
 													
-														<?php $__currentLoopData = $tunjangan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data1): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-													<?php $__currentLoopData = $penggajian; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data2): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-														<?php if($data2->tunjangan_pegawai_id == $data1->id && $data1->pegawai->id == $data->id ): ?>  
-															<?php echo e($data2->tanggal_pengambilan); ?>
+												<?php $__currentLoopData = $tunjangan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data1): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+													
+													<?php $__currentLoopData = $penggajian; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data3): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+														<?php if($data3->tunjangan_pegawai_id == $data1->id && $data1->pegawai->id == $data->id ): ?>  
+															<?php echo e($data3->status_pengambilan); ?>
 
-														<?php elseif($data2->tunjangan_pegawai_id != $data1->id && $data1->pegawai->id != $data->id ): ?>
+														<?php elseif($data3->tunjangan_pegawai_id != $data1->id && $data1->pegawai->id != $data->id ): ?>
 														
-														<?php elseif($data2->tunjangan_pegawai_id == $data1->id && $data1->pegawai->id != $data->id ): ?>
+														<?php elseif($data3->tunjangan_pegawai_id == $data1->id && $data1->pegawai->id != $data->id ): ?>
 															
 														<?php else: ?>
-														Belum Diambil
+														Belum diambial
 														<?php endif; ?>
-														<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
-													<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+												<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+												<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 												</td>
 												<td><?php $__currentLoopData = $tunjangan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data1): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-													<?php $__currentLoopData = $penggajian; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data2): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-														<?php if($data2->tunjangan_pegawai_id == $data1->id && $data1->pegawai->id == $data->id ): ?>  
-															<?php echo e($data2->status_pengambilan); ?>
+													<?php $__currentLoopData = $penggajian; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data3): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+														<?php if($data3->tunjangan_pegawai_id == $data1->id && $data1->pegawai->id == $data->id ): ?>  
+															<?php echo e($data3->status_pengambilan); ?>
 
-														<?php elseif($data2->tunjangan_pegawai_id != $data1->id && $data1->pegawai->id != $data->id ): ?>
+														<?php elseif($data3->tunjangan_pegawai_id != $data1->id && $data1->pegawai->id != $data->id ): ?>
 														
-														<?php elseif($data2->tunjangan_pegawai_id == $data1->id && $data1->pegawai->id != $data->id ): ?>
+														<?php elseif($data3->tunjangan_pegawai_id == $data1->id && $data1->pegawai->id != $data->id ): ?>
 															
 														<?php else: ?>
 														Belum diambial
@@ -151,10 +155,10 @@
 																<?php  $a=$data1->tunjangan->besar_uang; ;  ?>
 															<?php endif; ?>
 														<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
-							                        	<?php $__currentLoopData = $lemburp; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data1): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
-															<?php if($data1->pegawai_id == $data->id): ?>
-																<input type="hidden" name="jumlah_jam_lembur" value="<?php echo e($data1->Jumlah_jam); ?>">
-																<input type="hidden" name="jumlah_uang_lembur" value="<?php echo e($data1->Jumlah_jam*$data1->kategori->besar_uang); ?>">
+							                        	<?php $__currentLoopData = $lemburp; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data2): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+															<?php if($data2->pegawai_id == $data->id): ?>
+																<input type="hidden" name="jumlah_jam_lembur" value="<?php echo e($data2->Jumlah_jam); ?>">
+																<input type="hidden" name="jumlah_uang_lembur" value="<?php echo e($data2->Jumlah_jam*$data2->kategori->besar_uang); ?>">
 															<?php endif; ?>
 														<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 														<input type="hidden" name="gaji_pokok" value="<?php echo e($data->golongan->besar_uang+$data->jabatan->besar_uang); ?>">
@@ -163,7 +167,7 @@
 							                       <input type="hidden" name="petugas_penerima" value="lia">
 							                        <div class="form-group">
 							                            <div class="col-md-10 col-md-offset-0">
-							                                <button type="submit" class="btn-btn-danger ">
+							                                <button type="submit" class="btn btn-danger ">
 							                                    Ambil
 							                                </button>
 							                            </div>
@@ -175,7 +179,7 @@
 
 													
 												</td>
-												<td>liaa</td>
+												<td>dj</td>
 											</tr>
 											<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 										</tbody>

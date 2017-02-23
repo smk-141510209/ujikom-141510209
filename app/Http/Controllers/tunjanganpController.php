@@ -16,6 +16,11 @@ class tunjanganpController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+         $this->middleware('auth');
+        $this->middleware('Bendahara');
+    }
     public function index()
     {
         $tunjanganp=Tunjangan_pegawai::all();
@@ -49,7 +54,30 @@ class tunjanganpController extends Controller
     public function store(Request $request)
     {
         
-       
+       $roles=[
+            'pegawai_id'=>'required',
+        ];
+        $sms=[
+            'pegawai_id.required'=>'jangan kosong',
+        ];
+        $validasi=Validator::make(Input::all(),$roles,$sms);
+        if($validasi->fails()){
+            return redirect('tunjanganp/create')
+                    ->WithErrors($validasi)
+                    ->WithInput();
+        }
+        else{
+
+        $pegawai=Pegawai::where('id',Request('pegawai_id'))->first();
+            $tunjangan=Tunjangan::where('jabatan_id',$pegawai->jabatan_id)->where('golongan_id',$pegawai->golongan_id)->first();
+
+            if($tunjangan){
+
+                $tunjanganp=new Tunjangan_pegawai;
+                $tunjanganp->pegawai_id=Request('pegawai_id');
+                $tunjanganp->kode_tunjangan_id=$tunjangan->id;
+                $tunjanganp->save();
+                return redirect('tunjanganp');
             
             
             }

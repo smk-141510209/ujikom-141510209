@@ -15,6 +15,11 @@ class tunjanganController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+         $this->middleware('auth');
+        $this->middleware('Bendahara');
+    }
     public function index()
     {
         $tunjangan=Tunjangan::all();

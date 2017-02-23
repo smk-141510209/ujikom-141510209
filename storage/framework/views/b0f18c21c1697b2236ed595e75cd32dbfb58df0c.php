@@ -6,7 +6,7 @@
  <div class="col-md-15 col-md-offset-0">
             <div class="panel panel-danger">
             <div class="panel-heading">
-                <h1><center><div class="panel-title">Pencarian Menurut Pegawai</div></center></h1>
+                <h1><center><div class="panel-title">Pencarian Pegawai</div></center></h1>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" action="<?php echo e(url('query')); ?>" method="GET"">
                         <?php echo e(csrf_field()); ?>
@@ -15,15 +15,15 @@
                         
 
                         <div class="form-group<?php echo e($errors->has('q') ? ' has-error' : ''); ?>">
-                            <label for="q" class="col-md-4 control-label">Pegawai</label>
 
-                            <div class="col-md-6">
-                                <select name="q" class="form-control">
+
+                            
+                               <center> <select name="q">
                                     <option value="">cari</option>
                                     <?php $__currentLoopData = $pegawai; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                     <option value="<?php echo e($data->id); ?>"><?php echo e($data->nip); ?><?php echo e($data->user->name); ?></option>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
-                                </select>
+                                </select></center>
 
                                 <?php if($errors->has('q')): ?>
                                     <span class="help-block">
@@ -32,15 +32,10 @@
                                 <?php endif; ?>
                             </div>
                         </div>
-
-                       
                         
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-danger ">
+                                <center><button type="submit" class="btn btn-danger ">
                                     Cari
-                                </button>
+                                </button></center>
                             </div>
                         </div>
                     </form>
@@ -179,7 +174,7 @@
 
 													
 												</td>
-												<td>dj</td>
+												<td>liaa</td>
 											</tr>
 											<?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
 										</tbody>

@@ -32,7 +32,7 @@
                                     <option value="">Pilih</option>
                                     <option value="Admin">Admin</option>
                                     <option value="HRD">HRD</option>
-                                    <option value="Bagian Keuangan">Bagian Keuangan</option>
+                                    <option value="Bendahara">Bendahara</option>
                                     <option value="Karyawan">Karyawan</option>
                                 </select>
                                 @if ($errors->has('type_user'))

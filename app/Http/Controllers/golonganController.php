@@ -13,7 +13,13 @@ class golonganController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('HRD');
+    }
     public function index()
+
     {
         $golongan=Golongan::all();
         return view('golongan.index',compact('golongan'));

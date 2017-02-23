@@ -5,9 +5,10 @@
 @endsection
 @section('content')
 
-<div class="col-md-8 col-md-offset-2">
+<div class="col-md-15 col-md-offset-0">
             <div class="panel panel-danger">
-                <center><div class="panel-heading">Pencarian Gaji Menurut Karyawan</div></center>
+            <div class="panel-heading">
+                <h1><center><div class="panel-title">Pencarian Pegawai</div></center></h1>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" action="{{ url('query') }}" method="GET"">
                         {{ csrf_field() }}
@@ -15,15 +16,15 @@
                         
 
                         <div class="form-group{{ $errors->has('q') ? ' has-error' : '' }}">
-                            <center><label for="q" class="col-md-4 control-label">Pegawai</label></center>
 
-                            <div class="col-md-6">
-                                <select name="q" class="form-control">
-                                    <option value="">pilih</option>
-                                    @foreach($pegawaii as $data)
+
+                            
+                               <center> <select name="q">
+                                    <option value="">cari</option>
+                                    @foreach($pegawai as $data)
                                     <option value="{{$data->id}}">{{$data->nip}}{{$data->user->name}}</option>
                                     @endforeach
-                                </select>
+                                </select></center>
 
                                 @if ($errors->has('q'))
                                     <span class="help-block">
@@ -32,26 +33,22 @@
                                 @endif
                             </div>
                         </div>
-
-                       
                         
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-danger ">
+                                <center><button type="submit" class="btn btn-danger ">
                                     Cari
-                                </button>
+                                </button></center>
                             </div>
                         </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-<div class="section">
+                        <div class="section">
 <div class="card-panel green white-text">Hasil pencarian : <b>{{$query}}</b></div>
     @foreach($penggajian as $data)
     <div class="row">
 		<div class="col s12">
+                    </form>
+                </div>
+            </div>
+        </div>
+
 
 
             
@@ -74,7 +71,8 @@
                         <div class="panel-body">
         <div class="col-md-15 col-md-offset-0">
             <div class="panel panel-danger">
-			    <div class="panel-heading">Data Penggajian</div>
+            <div class="panel panel-heading">
+			    <center><div class="panel-title">Data Penggajian</div></center>
 	                <div class="panel-body">
 				        
 				        <table border="2" class="table table-success table-border table-hover">
@@ -175,7 +173,7 @@
 
 													
 												</td>
-												<td>dj</td>
+												<td>liaa</td>
 											</tr>
 											@endforeach
 										</tbody>

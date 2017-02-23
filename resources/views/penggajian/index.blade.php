@@ -7,7 +7,7 @@
  <div class="col-md-15 col-md-offset-0">
             <div class="panel panel-danger">
             <div class="panel-heading">
-                <h1><center><div class="panel-title">Pencarian Menurut Pegawai</div></center></h1>
+                <h1><center><div class="panel-title">Pencarian Pegawai</div></center></h1>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" action="{{ url('query') }}" method="GET"">
                         {{ csrf_field() }}
@@ -15,15 +15,15 @@
                         
 
                         <div class="form-group{{ $errors->has('q') ? ' has-error' : '' }}">
-                            <label for="q" class="col-md-4 control-label">Pegawai</label>
 
-                            <div class="col-md-6">
-                                <select name="q" class="form-control">
+
+                            
+                               <center> <select name="q">
                                     <option value="">cari</option>
                                     @foreach($pegawai as $data)
                                     <option value="{{$data->id}}">{{$data->nip}}{{$data->user->name}}</option>
                                     @endforeach
-                                </select>
+                                </select></center>
 
                                 @if ($errors->has('q'))
                                     <span class="help-block">
@@ -32,15 +32,10 @@
                                 @endif
                             </div>
                         </div>
-
-                       
                         
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-danger ">
+                                <center><button type="submit" class="btn btn-danger ">
                                     Cari
-                                </button>
+                                </button></center>
                             </div>
                         </div>
                     </form>
@@ -173,7 +168,7 @@
 
 													
 												</td>
-												<td>dj</td>
+												<td>liaa</td>
 											</tr>
 											@endforeach
 										</tbody>
