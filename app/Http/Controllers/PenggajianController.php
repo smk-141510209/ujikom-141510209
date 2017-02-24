@@ -49,6 +49,7 @@ class PenggajianController extends Controller
      */
     public function create()
     {
+        
         return view('penggajian.create');
     }
 
